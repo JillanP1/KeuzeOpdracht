@@ -1,0 +1,117 @@
+// _variables.scss
+$primary-color: #333;
+$secondary-color: #f4f4f4;
+$text-color: white;
+$font-stack: Arial, sans-serif;
+$base-padding: 1rem;
+
+// _mixins.scss
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// _base.scss
+body {
+  font-family: $font-stack;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+header {
+  background: $primary-color;
+  color: $text-color;
+  padding: $base-padding;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  @include flex-center;
+  gap: 1rem;
+  margin: $base-padding 0 0 0;
+
+  li {
+    margin: 0;
+  }
+
+  a {
+    color: $text-color;
+    text-decoration: none;
+  }
+}
+
+main {
+  padding: 2rem;
+  display: grid;
+  gap: 2rem;
+
+  section {
+    background: $secondary-color;
+    padding: 1rem;
+    border-radius: 5px;
+
+    h2 {
+      color: $primary-color;
+    }
+  }
+}
+
+footer {
+  background: $primary-color;
+  color: $text-color;
+  text-align: center;
+  padding: $base-padding;
+}
+
+// Responsive Design for Mobile
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 0;
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  main {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  section {
+    margin-bottom: 1rem;
+  }
+}
+
+// _components.scss
+button {
+  @extend .btn;
+
+  &.primary {
+    background-color: $primary-color;
+    color: $text-color;
+  }
+
+  &.secondary {
+    background-color: $secondary-color;
+    color: $primary-color;
+  }
+}
+
+// main.scss
+@import 'variables';
+@import 'mixins';
+@import 'base';
+@import 'components';
